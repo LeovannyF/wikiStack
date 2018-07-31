@@ -20,7 +20,7 @@ router.get('/', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-  console.log('req body', req.body);
+  // console.log('req body', req.body);
   try {
     const [user, wasCreated] = await User.findOrCreate({
       where: {
@@ -47,6 +47,8 @@ router.get('/:slug', async (req, res, next) => {
         slug: req.params.slug
       }
     });
-    res.send(wikipage(page));
+    const name = await page.getAuthor()
+    console.log('I AM THE NAME!',name);
+    res.send(wikipage(page, name));
   } catch(error) { next(error) }
 });

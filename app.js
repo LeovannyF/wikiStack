@@ -15,7 +15,7 @@ app.get('/', function(req, res, next){
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use('/wiki', wikiRouter);
-app.use('/user', userRouter);
+app.use('/users', userRouter);
 
 db.authenticate().
 then(() => {
